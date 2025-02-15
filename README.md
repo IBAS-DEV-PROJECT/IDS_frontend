@@ -1,5 +1,27 @@
-<h1> SPO-TI TEST </h1>
+<h1>SPO-TI TEST </h1>
+<p>SPO-TI TEST는 주어진 질문에 답하면 나의 성격에 맞는 음악을 추천해 주는 테스트 서비스입니다. 🙋🏻‍♂️🙋🏻‍♀️</p>
+<p>이 서비스는 "알아서 내 마음에 드는 음악을 추천해 줬으면 좋겠다." 라는 한마디에서 시작되었습니다. 🎶</p>
+<p>또한, 요즘 많은 사람들이 자신을 알고 정의하고 싶어 하는 트렌드를 반영하여 기획되었습니다. 🤔</p>
 
+<h2>📅 기간</h2>
+<p>기획 및 디자인: 2025.01.23 ~ 2025.02.13</p>
+<p>개발: 2025.02.14 ~ ing</p>
+
+<h2>👥 팀원</h2>
+<p>김해원 (PM): 기획, 디자인, Frontend 개발</p>
+<p>이류경: 기획, 디자인, Frontend 개발</p>
+<p>김태강: 기획, Backend 개발</p>
+<p>이소현: 기획, Backend 개발</p>
+<p>이강준: 기획, Backend 개발</p>
+
+<h2>🛠 기술 스택</h2>
+<p>Frontend: Next.js, TypeScript, Tailwind CSS</p>
+<p>Backend: Java, Spring</p>
+
+<!-- State Management: Jotai, React Query -->
+<!-- Auth & Database: Firebase (Google, Naver, Kakao 로그인) -->
+
+<h2>🌐 Frontend 상세</h2>
 <details>
   <summary>폴더 구조</summary>
     <div markdown="1">
