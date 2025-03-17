@@ -3,8 +3,8 @@ import type { Metadata } from "next";
 import "../styles/globals.css";
 
 export const metadata: Metadata = {
-  title: "My App",
-  description: "A Next.js 15 Project with TypeScript",
+  title: "SPOTI TEST",
+  description: "Test with Spotify",
 };
 
 export default function RootLayout({
@@ -13,12 +13,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
-      <body className="bg-gray-100 text-gray-900">
-        <header className="p-4 bg-blue-500 text-white">
-          <h1 className="text-xl font-bold">My App</h1>
-        </header>
-        <main className="container mx-auto p-6">{children}</main>
+    <html lang="ko">
+      <body className="bg-white text-gray-900 min-h-screen w-full">
+        <div className="min-h-screen w-full">
+          <header className="w-full p-4 bg-primary text-white">
+            <h1 className="text-xl sm:text-2xl font-bold">SPOTI TEST</h1>
+          </header>
+          <main className="w-full p-4">{children}</main>
+        </div>
       </body>
     </html>
   );
