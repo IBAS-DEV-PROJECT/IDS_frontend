@@ -1,15 +1,15 @@
 "use client";
 
-import { ActionButton } from "@/shared/components";
-
 export default function HomePage() {
   return (
     <>
-      <ActionButton styleType="kakao" actionType="save" />
-      <ActionButton styleType="image" actionType="save" />
-      <ActionButton styleType="insta" actionType="save" />
-      <ActionButton styleType="spotify" actionType="save" />
-      <ActionButton styleType="twitter" actionType="save" />
+      {/* <ActionButton
+        styleType="twitter"
+        actionType="save"
+        onClick={() => alert("clicked")}
+      />
+
+      <Input ref={inputRef} placeholder="이름이나 닉네임을 입력해 주세요." /> */}
     </>
   );
 }
