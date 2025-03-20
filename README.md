@@ -32,50 +32,76 @@
   <summary>폴더 구조</summary>
     <div markdown="1">
     <pre>
-    ids_frontend/
-    ├── public/                 # 정적 파일 (이미지, 아이콘, 폰트 등)
-    ├── src/
-    │   ├── app/                # Next.js App Router (폴더 기반 라우팅)
-    │   │   ├── layout.tsx      # 공통 레이아웃
-    │   │   ├── page.tsx        # 랜딩 페이지 (`/`)
-    │   │   ├── loading.tsx     # 전역 로딩 UI
-    │   │   ├── error.tsx       # 전역 에러 핸들링
-    │   │   │
-    │   │   ├── test/           # 음악 취향 테스트 기능
-    │   │   │   ├── [step]/     # 테스트 진행 단계
-    │   │   │
-    │   │   ├── result/         # 테스트 결과 페이지
-    │   │   │
-    │   │   ├── inquiry/        # 사용자 문의 관련 기능
-    │   │   │   ├── success/    # 문의 작성 완료 페이지
-    │   │   │
-    │   │   ├── admin/          # 관리자 페이지
-    │   │   │   ├── inquiry/    # 관리자 문의 관리 기능
-    │   │   │   │   ├── [id]/   # 개별 문의 보기
-    │   │   │
-    │   ├── shared/             # 공통 모듈 (FSD 적용)
-    │   │   ├── components/     # 재사용 가능한 UI 컴포넌트
-    │   │   ├── hooks/          # 커스텀 훅
-    │   │   ├── styles/         # Tailwind 관련 글로벌 스타일
-    │   │   ├── utils/          # 유틸리티 함수
-    │   │   ├── types/          # TypeScript 타입 정의
-    │   │
-    │   ├── features/           # 특정 기능별 모듈화 (FSD 적용)
-    │   │   ├── test/           # 테스트 기능 관련
-    │   │   ├── inquiry/        # 문의 기능 관련
-    │   │
-    │   ├── providers/          # 전역 상태 관리 (Context API)
-    │   │
-    │   ├── services/           # API 요청 관리
-    │   │
-    │   ├── middleware.ts       # 관리자 페이지 보호 (Middleware 적용)
+    project-root/
+    ├─ public/                    # 정적 파일 (이미지, 폰트, favicon 등)
+    │  ├─ images/                 # 공통 이미지 (logo, 배경 등)
+    │  ├─ icons/                  # SVG, PNG 아이콘
+    │  └─ fonts/                  # WOFF, WOFF2 폰트 파일
     │
-    ├── .eslint.json            # ESLint 설정
-    ├── .prettierrc.js          # Prettier 설정
-    ├── tailwind.config.ts      # Tailwind 설정
-    ├── tsconfig.json           # TypeScript 설정
-    ├── next.config.js          # Next.js 설정
-    └── package.json            # 프로젝트 설정
+    ├─ src/
+    │  ├─ app/                    # Next.js App Router (라우팅 + layout)
+    │  │  ├─ layout.tsx
+    │  │  ├─ page.tsx
+    │  │  ├─ test-intro/
+    │  │  │   └─ page.tsx
+    │  │  ├─ music-test/
+    │  │  │   └─ page.tsx
+    │  │  ├─ result/
+    │  │  │   └─ page.tsx
+    │  │  ├─ inquiry/
+    │  │  │   └─ page.tsx
+    │  │  └─ global-error.tsx    # (선택) 전역 에러 처리
+    │
+    │  ├─ middleware.ts          # 인증, 리디렉션 등 미들웨어
+    │
+    │  ├─ shared/                # 범용 UI, 스타일, 훅, 유틸
+    │  │  ├─ components/         # Button, Input, Typography 등
+    │  │  ├─ hooks/              # useDebounce, useMediaQuery 등
+    │  │  ├─ styles/             # global.css, colors.ts, typography.ts 등
+    │  │  ├─ lib/                # utils, constants, apiClient 등
+    │  │  └─ model/              # (선택) 전역 상태가 있다면
+    │
+    │  ├─ entities/              # 도메인 단위 상태/컴포넌트/타입
+    │  │  ├─ user/
+    │  │  │   ├─ components/
+    │  │  │   ├─ hooks/
+    │  │  │   ├─ model/
+    │  │  │   └─ types.ts
+    │  │  ├─ playlist/
+    │  │  │   ├─ components/
+    │  │  │   ├─ hooks/
+    │  │  │   ├─ model/
+    │  │  │   └─ types.ts
+    │  │  └─ inquiry/
+    │  │      ├─ components/
+    │  │      ├─ hooks/
+    │  │      ├─ model/
+    │  │      └─ types.ts
+    │
+    │  ├─ features/              # 기능 흐름 단위 구조
+    │  │  ├─ testIntro/
+    │  │  │   ├─ components/
+    │  │  │   └─ hooks/
+    │  │  ├─ musicTest/
+    │  │  │   ├─ components/
+    │  │  │   ├─ hooks/
+    │  │  │   └─ model/
+    │  │  └─ result/
+    │  │      ├─ components/
+    │  │      ├─ hooks/
+    │  │      └─ model/
+    │
+    │  ├─ widgets/               # Header, Footer 등 조합형 UI
+    │  │  ├─ Header/
+    │  │  └─ Footer/
+    │
+    └─ tailwind.config.ts        # Tailwind 설정
+    └─ postcss.config.js         # PostCSS 설정
+    └─ tsconfig.json             # TypeScript 설정
+    └─ package.json
+    └─ .gitignore
+
     </pre>
     </div>
+
 </details>

@@ -24,6 +24,9 @@ const config: Config = {
           DEFAULT: "#B3B3B3",
           dark: "#535353",
         },
+        red: {
+          DEFAULT: "#F87171",
+        },
       },
       borderRadius: {
         custom10: "10px",
