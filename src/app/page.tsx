@@ -1,13 +1,9 @@
-"use client";
-
-import { Badge } from "@/shared/components";
+// "use client";
 
 export default function HomePage() {
   return (
     <>
-      <Badge type="resolved" />
-      <Badge type="unresolved" />
-      <Badge type="pending" />
+      <h1>랜딩 페이지입니다.</h1>
     </>
   );
 }
