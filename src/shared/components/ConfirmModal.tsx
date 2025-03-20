@@ -1,10 +1,13 @@
 "use client";
 
+import clsx from "clsx";
+import { useBreakpoint } from "@/shared/hooks/useBreakpoint";
+
 interface ConfirmModalProps {
-  message: string;
+  message: React.ReactNode;
   onConfirm: () => void;
   onCancel: () => void;
-  onClose?: () => void;
+  onClose: () => void;
   confirmText?: string;
   cancelText?: string;
 }
@@ -17,44 +20,73 @@ const ConfirmModal = ({
   confirmText = "예",
   cancelText = "아니오",
 }: ConfirmModalProps) => {
+  const { isMobile, isTablet, isDesktop } = useBreakpoint();
+
+  const modalSizeClass = isMobile
+    ? "w-[18rem] h-[12rem]"
+    : isTablet
+      ? "w-[20rem] h-[13.5rem]"
+      : "w-[24rem] h-[14rem]";
+
+  const messageTextClass = isMobile
+    ? "text-sm"
+    : isTablet
+      ? "text-base"
+      : "text-lg";
+
+  const buttonSizeClass = isMobile
+    ? "w-[6.5rem] h-[2rem] text-sm"
+    : isTablet
+      ? "w-[7.5rem] h-[2.25rem] text-base"
+      : "w-[8rem] h-[2.5rem] text-base";
+
   return (
     <div
       className="fixed inset-0 z-50 flex items-center justify-center bg-black/50"
       onClick={onClose}
     >
-      {/* Modal Box */}
       <div
-        className="relative w-[19.5rem] h-[13.25rem] bg-white rounded-lg shadow-lg"
+        className={clsx(
+          "relative bg-white rounded-lg shadow-lg",
+          modalSizeClass,
+        )}
         onClick={(e) => e.stopPropagation()}
       >
         {/* Header */}
         <div className="w-full h-[2.5rem] bg-primary flex justify-end items-center pr-4 rounded-t-lg">
           <button
             onClick={onClose}
-            className="w-8 h-8 text-red text-2xl"
+            className="w-6 h-6 text-red text-xl"
             aria-label="닫기"
           >
             ●
           </button>
         </div>
 
-        <div className="flex flex-1 flex-col justify-between px-4 py-5">
+        {/* Content */}
+        <div className="flex flex-1 flex-col justify-between px-4 py-4">
           {/* Message */}
-          <div className="px-4 py-6 text-center">
-            <p className="text-base font-bold">{message}</p>
+          <div className="text-center">
+            <p className={clsx("font-bold", messageTextClass)}>{message}</p>
           </div>
 
           {/* Buttons */}
-          <div className="flex justify-center gap-4 px-4">
+          <div className="flex justify-center gap-4 mt-6">
             <button
-              onClick={onClose}
-              className="w-[7.75rem] h-[2.25rem] rounded-custom10 bg-gray text-black font-semibold"
+              onClick={onCancel}
+              className={clsx(
+                "rounded-custom10 bg-gray text-black font-semibold",
+                buttonSizeClass,
+              )}
             >
               {cancelText}
             </button>
             <button
               onClick={onConfirm}
-              className="w-[7.75rem] h-[2.25rem] rounded-custom10 bg-primary text-white font-semibold"
+              className={clsx(
+                "rounded-custom10 bg-primary text-white font-semibold",
+                buttonSizeClass,
+              )}
             >
               {confirmText}
             </button>
