@@ -1,19 +1,15 @@
 "use client";
 
-import { Button } from "@/shared/components";
+import { ActionButton } from "@/shared/components";
 
 export default function HomePage() {
   return (
     <>
-      <Button variant="primary" onClick={() => alert("clicked!")}>
-        테스트 시작하기
-      </Button>
-      <Button variant="secondary" onClick={() => alert("clicked!")}>
-        문의하기
-      </Button>
-      <Button variant="option" onClick={() => alert("clicked!")}>
-        스트레스 받을 땐 힙합이지
-      </Button>
+      <ActionButton styleType="kakao" actionType="save" />
+      <ActionButton styleType="image" actionType="save" />
+      <ActionButton styleType="insta" actionType="save" />
+      <ActionButton styleType="spotify" actionType="save" />
+      <ActionButton styleType="twitter" actionType="save" />
     </>
   );
 }
