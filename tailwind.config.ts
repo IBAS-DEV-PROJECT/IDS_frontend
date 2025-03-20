@@ -27,9 +27,22 @@ const config: Config = {
         red: {
           DEFAULT: "#F87171",
         },
+        kakao: {
+          DEFAULT: "#FEE500",
+        },
       },
       borderRadius: {
         custom10: "10px",
+      },
+      backgroundImage: {
+        "gradient-action": `linear-gradient(
+          to right,
+          #4F5BD5 0%,
+          #BF4D8F 25%,
+          #E96B60 50%,
+          #FCAC4A 75%,
+          #FEDA75 100%
+        )`,
       },
     },
   },
