@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { ProgressIndicator } from "@/shared/components";
+import { ProgressIndicator } from "@/shared/ui";
 
 export default function HomePage() {
   // const [currentStep, setCurrentStep] = useState(1);
