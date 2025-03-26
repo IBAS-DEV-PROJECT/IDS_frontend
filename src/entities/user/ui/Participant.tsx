@@ -1,3 +1,5 @@
+"use client";
+
 import { useUserCount } from "../model/useUserCount";
 import { useBreakpoint } from "@/shared/hooks/useBreakpoint";
 
@@ -17,25 +19,22 @@ const Participant = () => {
 
   if (status === 400) {
     return (
-      <p className="text-red">
-        서버 오류가 발생했습니다. (status: {status})
-      </p>
+      <p className="text-red">서버 오류가 발생했습니다. (status: {status})</p>
     );
   }
 
   const textSizeClass = isMobile
     ? "text-sm"
     : isTablet
-    ? "text-base"
-    : "text-lg";
+      ? "text-base"
+      : "text-lg";
 
   return (
     <p className={`${textSizeClass} text-black`}>
-      현재 {total_participants.toLocaleString()}명이 참여했습니다.
+      현재 <strong>{total_participants.toLocaleString()}명</strong>이
+      참여했습니다.
     </p>
   );
 };
 
 export default Participant;
-
-
