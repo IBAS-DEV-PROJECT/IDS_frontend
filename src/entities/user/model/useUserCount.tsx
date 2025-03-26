@@ -1,4 +1,4 @@
-import { useApi } from '@/shared/hooks/useApi';
+import { useApi } from "@/shared/hooks/useApi";
 
 // type UserCountResponse = {
 //   status: number;
@@ -16,7 +16,7 @@ import { useApi } from '@/shared/hooks/useApi';
 
 export const useUserCount = () => {
   const dummyData = {
-    total_participants: 1234,
+    total_participants: 123456,
     status: 200,
     messege: "mock success",
   };
@@ -27,5 +27,3 @@ export const useUserCount = () => {
     error: null,
   };
 };
-
-

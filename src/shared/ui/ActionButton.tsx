@@ -1,7 +1,7 @@
 "use client";
 
 import clsx from "clsx";
-import { ButtonHTMLAttributes, useEffect, useState } from "react";
+import { ButtonHTMLAttributes } from "react";
 import { useBreakpoint } from "../hooks/useBreakpoint";
 
 type StyleType = "spotify" | "image" | "kakao" | "insta" | "twitter" | "link";
@@ -35,20 +35,14 @@ const ActionButton = ({
   children,
   ...props
 }: ActionButtonProps) => {
-  const { isMobile, isTablet, isDesktop } = useBreakpoint();
-  const [mounted, setMounted] = useState(false);
+  const { isMobile, isTablet } = useBreakpoint();
 
-  useEffect(() => {
-    setMounted(true);
-  }, []);
+  const sizeClass = isMobile
+  ? "w-[3.25rem] h-[3.25rem]"
+  : isTablet
+    ? "w-[3.75rem] h-[3.75rem]"
+    : "w-[4.25rem] h-[4.25rem]";
 
-  const sizeClass = mounted
-    ? isMobile
-      ? "w-[3.25rem] h-[3.25rem]"
-      : isTablet
-        ? "w-[3.75rem] h-[3.75rem]"
-        : "w-[4.25rem] h-[4.25rem]"
-    : "";
 
   return (
     <button

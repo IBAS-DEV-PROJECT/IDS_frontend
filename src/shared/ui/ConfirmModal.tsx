@@ -20,7 +20,7 @@ const ConfirmModal = ({
   confirmText = "예",
   cancelText = "아니오",
 }: ConfirmModalProps) => {
-  const { isMobile, isTablet, isDesktop } = useBreakpoint();
+  const { isMobile, isTablet } = useBreakpoint();
 
   const modalSizeClass = isMobile
     ? "w-[18rem] h-[12rem]"

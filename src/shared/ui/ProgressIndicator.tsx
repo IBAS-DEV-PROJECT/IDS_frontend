@@ -1,7 +1,6 @@
 "use client";
 
 import clsx from "clsx";
-import { useState, useEffect } from "react";
 import { useBreakpoint } from "@/shared/hooks/useBreakpoint";
 
 interface ProgressIndicatorProps {
@@ -17,37 +16,27 @@ const ProgressIndicator = ({
   onPrev,
   onNext,
 }: ProgressIndicatorProps) => {
-  const { isMobile, isTablet, isDesktop } = useBreakpoint();
+  const { isMobile, isTablet } = useBreakpoint();
 
-  const [mounted, setMounted] = useState(false);
 
-  useEffect(() => {
-    setMounted(true);
-  }, []);
+  const wrapperClass = isMobile
+  ? "text-sm"
+  : isTablet
+    ? "text-base"
+    : "text-lg";
 
-  const wrapperClass = mounted
-    ? isMobile
-      ? "text-sm"
-      : isTablet
-        ? "text-base"
-        : "text-lg"
-    : "";
+const buttonSize = isMobile
+  ? "w-[1.5rem] h-[1.5rem]"
+  : isTablet
+    ? "w-[2rem] h-[2rem]"
+    : "w-[2.5rem] h-[2.5rem]";
 
-  const buttonSize = mounted
-    ? isMobile
-      ? "w-[1.5rem] h-[1.5rem]"
-      : isTablet
-        ? "w-[2rem] h-[2rem]"
-        : "w-[2.5rem] h-[2.5rem]"
-    : "";
+const displayBoxSize = isMobile
+  ? "px-4 py-1 rounded-[1rem]"
+  : isTablet
+    ? "px-5 py-1.5 rounded-[1.25rem]"
+    : "px-6 py-2 rounded-[1.5rem]";
 
-  const displayBoxSize = mounted
-    ? isMobile
-      ? "px-4 py-1 rounded-[1rem]"
-      : isTablet
-        ? "px-5 py-1.5 rounded-[1.25rem]"
-        : "px-6 py-2 rounded-[1.5rem]"
-    : "";
 
   return (
     <div

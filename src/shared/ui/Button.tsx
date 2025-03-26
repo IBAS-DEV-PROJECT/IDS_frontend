@@ -1,7 +1,7 @@
 "use client";
 
 import clsx from "clsx";
-import { ButtonHTMLAttributes, useEffect, useState } from "react";
+import { ButtonHTMLAttributes } from "react";
 import { useBreakpoint } from "../hooks/useBreakpoint";
 
 const baseStyles =
@@ -30,41 +30,34 @@ const Button = ({
   className,
   ...props
 }: ButtonProps) => {
-  const { isMobile, isTablet, isDesktop } = useBreakpoint();
-
-  const [mounted, setMounted] = useState(false);
-  useEffect(() => {
-    setMounted(true);
-  }, []);
+  const { isMobile, isTablet } = useBreakpoint();
 
   let sizeClass = "";
-  if (mounted) {
-    if (variant === "primary") {
-      sizeClass = isMobile
-        ? "w-[15.5rem] h-[3rem] text-[0.875rem]"
-        : isTablet
-          ? "w-[18rem] h-[3.5rem] text-base"
-          : "w-[20rem] h-[4rem] text-lg";
-    } else if (variant === "secondary") {
-      sizeClass = isMobile
-        ? "w-[15.5rem] h-[3rem] text-base"
-        : isTablet
-          ? "w-[18rem] h-[3.5rem] text-lg"
-          : "w-[20rem] h-[4rem] text-xl";
-    } else if (variant === "option") {
-      sizeClass = isMobile
-        ? "w-[15.5rem] h-[3.75rem] text-xs"
-        : isTablet
-          ? "w-[18rem] h-[4rem] text-sm"
-          : "w-[20rem] h-[4.25rem] text-base";
-    }
+  if (variant === "primary") {
+    sizeClass = isMobile
+      ? "w-[15.5rem] h-[3rem] text-[0.875rem]"
+      : isTablet
+        ? "w-[18rem] h-[3.5rem] text-base"
+        : "w-[20rem] h-[4rem] text-lg";
+  } else if (variant === "secondary") {
+    sizeClass = isMobile
+      ? "w-[15.5rem] h-[3rem] text-base"
+      : isTablet
+        ? "w-[18rem] h-[3.5rem] text-lg"
+        : "w-[20rem] h-[4rem] text-xl";
+  } else if (variant === "option") {
+    sizeClass = isMobile
+      ? "w-[15.5rem] h-[3.75rem] text-xs"
+      : isTablet
+        ? "w-[18rem] h-[4rem] text-sm"
+        : "w-[20rem] h-[4.25rem] text-base";
   }
 
   return (
     <button
       className={clsx(
         baseStyles,
-        mounted && sizeClass,
+        sizeClass,
         variantStyles[variant],
         isLoading && "opacity-50 cursor-not-allowed",
         className,
