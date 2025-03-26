@@ -23,7 +23,7 @@ const badgeText: Record<BadgeType, string> = {
 };
 
 const Badge = ({ type, className, ...props }: BadgeProps) => {
-  const { isMobile, isTablet, isDesktop } = useBreakpoint();
+  const { isMobile, isTablet } = useBreakpoint();
 
   const sizeClass = isMobile
     ? "w-[2.5rem] h-[1.5rem] text-[0.5rem] px-2"

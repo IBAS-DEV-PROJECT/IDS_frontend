@@ -5,8 +5,6 @@ import {
   forwardRef,
   InputHTMLAttributes,
   TextareaHTMLAttributes,
-  useEffect,
-  useState,
 } from "react";
 import { useBreakpoint } from "../hooks/useBreakpoint";
 
@@ -28,18 +26,12 @@ type InputProps =
 
 const Input = forwardRef<HTMLInputElement | HTMLTextAreaElement, InputProps>(
   ({ variant = "nickname", error, className, ...props }, ref) => {
-    const { isMobile, isTablet, isDesktop } = useBreakpoint();
-    const [mounted, setMounted] = useState(false);
-
-    useEffect(() => {
-      setMounted(true);
-    }, []);
+    const { isMobile, isTablet } = useBreakpoint();
 
     const baseStyles =
       "rounded-md border border-gray-300 px-3 text-sm focus:outline-none focus:ring-2 focus:ring-black placeholder:text-gray-400";
 
     const getResponsiveSize = () => {
-      if (!mounted) return "";
       if (variant === "nickname") {
         return isMobile
           ? "w-[15.5rem] h-[3.25rem]"
