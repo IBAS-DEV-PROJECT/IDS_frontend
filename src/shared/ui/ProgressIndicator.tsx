@@ -18,25 +18,23 @@ const ProgressIndicator = ({
 }: ProgressIndicatorProps) => {
   const { isMobile, isTablet } = useBreakpoint();
 
-
   const wrapperClass = isMobile
-  ? "text-sm"
-  : isTablet
     ? "text-base"
-    : "text-lg";
+    : isTablet
+      ? "text-lg"
+      : "text-xl";
 
-const buttonSize = isMobile
-  ? "w-[1.5rem] h-[1.5rem]"
-  : isTablet
-    ? "w-[2rem] h-[2rem]"
-    : "w-[2.5rem] h-[2.5rem]";
+  // const buttonSize = isMobile
+  //   ? "w-[1.5rem] h-[1.5rem]"
+  //   : isTablet
+  //     ? "w-[2rem] h-[2rem]"
+  //     : "w-[2.5rem] h-[2.5rem]";
 
-const displayBoxSize = isMobile
-  ? "px-4 py-1 rounded-[1rem]"
-  : isTablet
-    ? "px-5 py-1.5 rounded-[1.25rem]"
-    : "px-6 py-2 rounded-[1.5rem]";
-
+  // const displayBoxSize = isMobile
+  //   ? "pt-1 rounded-custom10"
+  //   : isTablet
+  //     ? "rounded-custom10"
+  //     : "rounded-custom10";
 
   return (
     <div
@@ -47,20 +45,23 @@ const displayBoxSize = isMobile
         onClick={onPrev}
         disabled={current === 1}
         className={clsx(
-          buttonSize,
           "flex items-center justify-center",
           current === 1 && "opacity-40 cursor-not-allowed",
         )}
         aria-label="이전 단계"
       >
-        <div className="w-0 h-0 border-t-[0.5rem] border-b-[0.5rem] border-r-[0.75rem] border-t-transparent border-b-transparent border-r-green-500" />
+        <div
+          className="w-0 h-0
+                border-t-[16px] border-t-transparent
+                border-b-[16px] border-b-transparent
+                border-r-[28px] border-r-primary"
+        />
       </button>
 
       {/* Progress Box */}
       <div
         className={clsx(
-          "border border-gray-400 text-gray-700 font-semibold",
-          displayBoxSize,
+          "flex justify-center w-40 h-9 border border-gray text-black font-semibold pt-1 rounded-custom10",
         )}
       >
         {current} / {total}
@@ -69,10 +70,15 @@ const displayBoxSize = isMobile
       {/* Right Arrow */}
       <button
         onClick={onNext}
-        className={clsx(buttonSize, "flex items-center justify-center")}
+        className={clsx("flex items-center justify-center")}
         aria-label="다음 단계"
       >
-        <div className="w-0 h-0 border-t-[0.5rem] border-b-[0.5rem] border-l-[0.75rem] border-t-transparent border-b-transparent border-l-green-500" />
+        <div
+          className="w-0 h-0
+                border-t-[16px] border-t-transparent
+                border-b-[16px] border-b-transparent
+                border-l-[28px] border-l-primary"
+        />
       </button>
     </div>
   );
