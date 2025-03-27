@@ -3,10 +3,12 @@
 import clsx from "clsx";
 import { useBreakpoint } from "@/shared/hooks/useBreakpoint";
 
+type ModalType = "alert" | "confirm";
+
 interface ConfirmModalProps {
   message: React.ReactNode;
-  onConfirm: () => void;
-  onCancel: () => void;
+  type?: ModalType;
+  onConfirm?: () => void;
   onClose: () => void;
   confirmText?: string;
   cancelText?: string;
@@ -14,8 +16,8 @@ interface ConfirmModalProps {
 
 const ConfirmModal = ({
   message,
+  type = "confirm",
   onConfirm,
-  onCancel,
   onClose,
   confirmText = "예",
   cancelText = "아니오",
@@ -56,39 +58,39 @@ const ConfirmModal = ({
         <div className="w-full h-[2.5rem] bg-primary flex justify-end items-center pr-4 rounded-t-lg">
           <button
             onClick={onClose}
-            className="w-6 h-6 text-red text-xl"
+            className="w-3 h-3 bg-red rounded-full"
             aria-label="닫기"
-          >
-            ●
-          </button>
+          ></button>
         </div>
 
         {/* Content */}
-        <div className="flex flex-1 flex-col justify-between px-4 py-4">
+        <div className="flex flex-1 flex-col justify-between px-4 py-4 h-[9.15rem]">
           {/* Message */}
-          <div className="text-center">
+          <div className="text-center pt-5">
             <p className={clsx("font-bold", messageTextClass)}>{message}</p>
           </div>
 
           {/* Buttons */}
           <div className="flex justify-center gap-4 mt-6">
+            {type === "confirm" && (
+              <button
+                className={clsx(
+                  "rounded-custom10 bg-gray text-black font-semibold",
+                  buttonSizeClass,
+                )}
+              >
+                {cancelText ?? "취소"}
+              </button>
+            )}
+
             <button
-              onClick={onCancel}
-              className={clsx(
-                "rounded-custom10 bg-gray text-black font-semibold",
-                buttonSizeClass,
-              )}
-            >
-              {cancelText}
-            </button>
-            <button
-              onClick={onConfirm}
+              onClick={onConfirm ?? onClose}
               className={clsx(
                 "rounded-custom10 bg-primary text-white font-semibold",
                 buttonSizeClass,
               )}
             >
-              {confirmText}
+              {confirmText ?? "확인"}
             </button>
           </div>
         </div>
