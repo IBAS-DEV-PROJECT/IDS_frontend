@@ -1,11 +1,7 @@
 "use client";
 
 import clsx from "clsx";
-import {
-  forwardRef,
-  InputHTMLAttributes,
-  TextareaHTMLAttributes,
-} from "react";
+import { forwardRef, InputHTMLAttributes, TextareaHTMLAttributes } from "react";
 import { useBreakpoint } from "../hooks/useBreakpoint";
 
 type InputVariant = "nickname" | "title" | "textarea";
@@ -29,15 +25,15 @@ const Input = forwardRef<HTMLInputElement | HTMLTextAreaElement, InputProps>(
     const { isMobile, isTablet } = useBreakpoint();
 
     const baseStyles =
-      "rounded-md border border-gray-300 px-3 text-sm focus:outline-none focus:ring-2 focus:ring-black placeholder:text-gray-400";
+      "rounded-xl border border-gray px-3 text-sm focus:outline-none focus:ring-1 focus:ring-gray-dark placeholder:text-gray";
 
     const getResponsiveSize = () => {
       if (variant === "nickname") {
         return isMobile
-          ? "w-[15.5rem] h-[3.25rem]"
+          ? "w-[15.5rem] h-[3.75rem]"
           : isTablet
-            ? "w-[15.5rem] h-[3.5rem]"
-            : "w-[15.5rem] h-[3.75rem]";
+            ? "w-[15.5rem] h-[4rem]"
+            : "w-[15.5rem] h-[4.25rem]";
       }
       if (variant === "title") {
         return isMobile
@@ -58,7 +54,7 @@ const Input = forwardRef<HTMLInputElement | HTMLTextAreaElement, InputProps>(
 
     if (variant === "textarea") {
       return (
-        <div className="w-full">
+        <>
           <textarea
             ref={ref as React.Ref<HTMLTextAreaElement>}
             className={clsx(
@@ -70,19 +66,19 @@ const Input = forwardRef<HTMLInputElement | HTMLTextAreaElement, InputProps>(
             {...(props as TextareaHTMLAttributes<HTMLTextAreaElement>)}
           />
           {error && <p className="mt-1 text-xs text-red-500">{error}</p>}
-        </div>
+        </>
       );
     }
 
     return (
-      <div className="w-full">
+      <>
         <input
           ref={ref as React.Ref<HTMLInputElement>}
           className={clsx(baseStyles, getResponsiveSize(), className)}
           {...(props as InputHTMLAttributes<HTMLInputElement>)}
         />
         {error && <p className="mt-1 text-xs text-red-500">{error}</p>}
-      </div>
+      </>
     );
   },
 );
