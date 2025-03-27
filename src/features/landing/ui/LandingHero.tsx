@@ -17,10 +17,8 @@ const LandingHero = () => {
 
       <div className="flex flex-col justify-between items-center h-[25vh]">
         <div className="flex flex-col justify-center items-center bg-gray w-[15.5rem] h-[4.25rem] rounded-xl">
-          <p>
-            <strong>음악 취향 테스트</strong>하고
-          </p>
-          <p>
+          <p className="text-center leading-relaxed">
+            <strong>음악 취향 테스트</strong>하고 <br />
             <strong>오늘의 음악</strong>을 추천 받으세요!
           </p>
         </div>
