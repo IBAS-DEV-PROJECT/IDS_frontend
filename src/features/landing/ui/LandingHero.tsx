@@ -1,15 +1,14 @@
 "use client";
 
+import { useRouter } from "next/navigation";
+
 // ui
 import CharacterImage from "@/entities/character/ui/CharacterImage";
 import Participant from "@/entities/user/ui/Participant";
 import { Button } from "@/shared/ui";
 
-// model
-import { useStartTest } from "../model/useStartTest";
-
 const LandingHero = () => {
-  const { handleStartClick } = useStartTest();
+  const router = useRouter();
 
   return (
     <div className="flex flex-col justify-start items-center gap-6 h-full">
@@ -23,7 +22,7 @@ const LandingHero = () => {
           </p>
         </div>
         <Participant />
-        <Button onClick={handleStartClick}>테스트 시작하기</Button>
+        <Button onClick={() => router.push("/test")}>테스트 시작하기</Button>
       </div>
     </div>
   );
